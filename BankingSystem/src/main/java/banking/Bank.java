@@ -69,6 +69,6 @@ public class Bank implements BankInterface {
             accounts.replace(accountNumber, account);
             return true;
         }
-        return true;
+        return false;
     }
 }

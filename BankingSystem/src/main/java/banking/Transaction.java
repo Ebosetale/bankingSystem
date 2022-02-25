@@ -24,7 +24,6 @@ public class Transaction {
     }
 
     public double getBalance() {
-        // complete the function
         return this.getBalance();
     }
 
