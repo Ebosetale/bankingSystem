@@ -16,6 +16,8 @@ public class Transaction {
      * @throws Exception Account validation failed.
      */
     public Transaction(Bank bank, Long accountNumber, int attemptedPin) throws Exception {
+
+        if(!bank.authenticateUser(accountNumber, attemptedPin)) throw  new Exception();
         // complete the function
         this.bank = bank;
         this.accountNumber = accountNumber;

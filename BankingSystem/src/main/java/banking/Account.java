@@ -43,11 +43,11 @@ public abstract class Account {
 
     public void creditAccount(double amount) {
         balance= balance + amount;
-        // complete the function
     }
 
     public boolean debitAccount(double amount) {
         // complete the function
+        if(amount > balance) return  false;
         balance = balance - amount;
         return true;
     }

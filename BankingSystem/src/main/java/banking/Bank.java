@@ -38,8 +38,8 @@ public class Bank implements BankInterface {
     }
 
     public boolean authenticateUser(Long accountNumber, int pin) {
-        // complete the function
-        return true;
+        Account account = accounts.getOrDefault(accountNumber, null);
+        return account != null && account.validatePin(pin);
     }
 
     public double getBalance(Long accountNumber) {
