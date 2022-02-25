@@ -8,24 +8,33 @@ import java.util.LinkedHashMap;
  */
 public class Bank implements BankInterface {
     private LinkedHashMap<Long, Account> accounts;
+    private static Long accountNum = 0L;
 
     public Bank() {
         // complete the function
+        accounts = new LinkedHashMap<>();
     }
 
     private Account getAccount(Long accountNumber) {
         // complete the function
-        return null;
+        return accounts.getOrDefault(accountNumber, null);
     }
 
     public Long openCommercialAccount(Company company, int pin, double startingDeposit) {
         // complete the function
-        return -1L;
+        accountNum+=1;
+        CommercialAccount account = new CommercialAccount(company, accountNum, pin, startingDeposit);
+        accounts.put(accountNum, account);
+        return accountNum;
     }
 
     public Long openConsumerAccount(Person person, int pin, double startingDeposit) {
         // complete the function
-        return -1L;
+        accountNum+=1;
+        ConsumerAccount account = new ConsumerAccount(person, accountNum, pin, startingDeposit);
+        accounts.put(accountNum, account);
+        // account.getBalance()
+        return (long) account.getBalance();
     }
 
     public boolean authenticateUser(Long accountNumber, int pin) {
@@ -35,15 +44,31 @@ public class Bank implements BankInterface {
 
     public double getBalance(Long accountNumber) {
         // complete the function
-        return -1;
+        Account account = accounts.getOrDefault(accountNumber, null);
+        if(account != null) return  account.getBalance();
+        return 0.0;
     }
 
     public void credit(Long accountNumber, double amount) {
         // complete the function
+        Account account = accounts.getOrDefault(accountNumber, null);
+
+        if(account != null){
+            account.creditAccount(amount);
+            accounts.replace(accountNumber, account);
+        }
     }
 
     public boolean debit(Long accountNumber, double amount) {
         // complete the function
+
+        Account account = accounts.getOrDefault(accountNumber, null);
+
+        if(account != null){
+            account.debitAccount(amount);
+            accounts.replace(accountNumber, account);
+            return true;
+        }
         return true;
     }
 }

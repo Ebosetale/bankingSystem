@@ -17,19 +17,23 @@ public class Transaction {
      */
     public Transaction(Bank bank, Long accountNumber, int attemptedPin) throws Exception {
         // complete the function
+        this.bank = bank;
+        this.accountNumber = accountNumber;
     }
 
     public double getBalance() {
         // complete the function
-        return -1;
+        return this.getBalance();
     }
 
     public void credit(double amount) {
         // complete the function
+        bank.credit(accountNumber, amount);
     }
 
     public boolean debit(double amount) {
         // complete the function
-        return true;
+
+        return bank.debit(accountNumber, amount);
     }
 }
