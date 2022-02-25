@@ -17,14 +17,14 @@ public class Transaction {
      */
     public Transaction(Bank bank, Long accountNumber, int attemptedPin) throws Exception {
 
-        if(!bank.authenticateUser(accountNumber, attemptedPin)) throw  new Exception();
+        if(!bank.authenticateUser(accountNumber, attemptedPin)) throw new Exception("Pin not correct");
         // complete the function
         this.bank = bank;
         this.accountNumber = accountNumber;
     }
 
     public double getBalance() {
-        return this.getBalance();
+        return bank.getBalance(accountNumber);
     }
 
     public void credit(double amount) {

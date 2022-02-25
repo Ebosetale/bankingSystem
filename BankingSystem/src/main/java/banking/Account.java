@@ -29,7 +29,6 @@ public abstract class Account {
     }
 
     public boolean validatePin(int attemptedPin) {
-        // complete the function
         return attemptedPin == pin;
     }
 

@@ -34,7 +34,7 @@ public class Bank implements BankInterface {
         ConsumerAccount account = new ConsumerAccount(person, accountNum, pin, startingDeposit);
         accounts.put(accountNum, account);
         // account.getBalance()
-        return (long) account.getBalance();
+        return accountNum;
     }
 
     public boolean authenticateUser(Long accountNumber, int pin) {
@@ -67,7 +67,7 @@ public class Bank implements BankInterface {
         if(account != null){
             if(account.getBalance() < amount) return false;
             account.debitAccount(amount);
-            accounts.replace(accountNumber, account);
+            //accounts.replace(accountNumber, account);
             return true;
         }
         return false;
