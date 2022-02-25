@@ -65,6 +65,7 @@ public class Bank implements BankInterface {
         Account account = accounts.getOrDefault(accountNumber, null);
 
         if(account != null){
+            if(account.getBalance() < amount) return false;
             account.debitAccount(amount);
             accounts.replace(accountNumber, account);
             return true;
